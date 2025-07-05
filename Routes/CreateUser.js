@@ -16,6 +16,7 @@ router.post(
       return res.status(400).json(errors);
       // return res.success(400).json({errors: errors.array()});
     }
+    let email = req.body.email;
     let userData = await User.findOne({ email });
 
     if (userData) {
