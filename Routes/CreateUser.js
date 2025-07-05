@@ -16,13 +16,6 @@ router.post(
       return res.status(400).json(errors);
       // return res.success(400).json({errors: errors.array()});
     }
-    let userData = await User.findOne({ email });
-
-    if (!!userData) {
-      return res
-        .status(400)
-        .json({ errors: "user with this email already exists" });
-    }
     const salt = await bcrypt.genSalt(10);
     const secPassword = await bcrypt.hash(req.body.password, salt);
     try {
